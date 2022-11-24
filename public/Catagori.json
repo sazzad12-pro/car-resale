@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Microbus",
+    "icon": "https://i.ibb.co/JKgFDCT/istockphoto-1363457057-612x612-removebg-preview.png",
+    "category": [
+      {
+        "categoryId": "01",
+        "name": "Toyota Hiace Super GL 2017",
+        "img": "https://i.ibb.co/f0sYNtb/giant-176568.jpg",
+        "location": "Dhaka",
+        "reprice": "3,355,000",
+        "orprice": "5,000,000",
+        "year": "3 days ago",
+        "seller": "Kader Mia"
+      },
+      {
+        "categoryId": "02",
+        "name": "Toyota Hiace Grand Cabin",
+        "img": "https://i.ibb.co/JdKRmf5/giant-180199.jpg",
+        "location": "cumilla",
+        "reprice": "2,355,000",
+        "orprice": "3,000,000",
+        "year": "1 days ago",
+        "seller": "Ab Badsha"
+      }
+    ]
+  },
+  {
+    "name": "Luxury car",
+    "icon": "https://i.ibb.co/683gKtq/istockphoto-880190282-612x612-removebg-preview.png",
+    "category": [
+      {
+        "categoryId": "03",
+        "name": "Volvo S90",
+        "img": "https://i.ibb.co/87KWBhS/2022-Volvo-S90-Gallery1.jpg",
+        "location": "Mirpur",
+        "reprice": "7,355,000",
+        "orprice": "9,000,000",
+        "year": "1 days ago",
+        "seller": "Mamun"
+      },
+      {
+        "categoryId": "04",
+        "name": "Lexus LS",
+        "img": "https://i.ibb.co/KW8CK6P/2022-Lexus-LS-bestlxry.jpg",
+        "location": "Chonpara",
+        "reprice": "7,355,000",
+        "orprice": "9,000,000",
+        "year": "1 days ago",
+        "seller": "shahin"
+      }
+    ]
+  },
+  {
+    "name": "Electric car",
+    "icon": "https://i.ibb.co/6bbj9TB/istockphoto-1302241350-612x612-removebg-preview.png",
+    "category": [
+      {
+        "categoryId": "05",
+        "name": "Peugeot e-2008",
+        "img": "https://i.ibb.co/HtSTYXn/17.webp",
+        "location": "Narayongonj",
+        "reprice": "5,355,000",
+        "orprice": "7,000,000",
+        "year": "1 days ago",
+        "seller": "Nasir"
+      },
+      {
+        "categoryId": "06",
+        "name": "Model s",
+        "img": "https://i.ibb.co/VJd2g6n/download.jpg",
+        "location": "Nohakali",
+        "reprice": "2,355,000",
+        "orprice": "3,000,000",
+        "year": "2 days ago",
+        "seller": "kabila "
+      }
+    ]
+  }
+]
