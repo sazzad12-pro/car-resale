@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
+import UseContextApi from "./Context/useContextApi";
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <UseContextApi>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </UseContextApi>
   </QueryClientProvider>
 );
 
