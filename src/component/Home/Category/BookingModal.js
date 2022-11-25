@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../Context/useContextApi";
 
 const BookingModal = ({ category }) => {
+  const { user } = useContext(AuthContext);
   const { name } = category;
   return (
     <div>
-      {/* The button to open modal */}
-
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="book-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
@@ -17,10 +16,7 @@ const BookingModal = ({ category }) => {
             ✕
           </label>
           <h3 className="text-lg font-bold">Congratulations {name} </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+          <form></form>
         </div>
       </div>
     </div>

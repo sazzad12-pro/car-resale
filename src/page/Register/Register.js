@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/useContextApi";
 
 const Register = () => {
-  const { googleSingUp } = useContext(AuthContext);
+  const { googleSingUp, createUser, updateName } = useContext(AuthContext);
   const handleGoogle = () => {
     googleSingUp()
       .then((result) => {
@@ -12,13 +12,35 @@ const Register = () => {
       })
       .catch((err) => console.error(err));
   };
+  const handleCreateUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+
+    const customer = form.customer.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        const userInfo = { displayName: name };
+        updateName(userInfo)
+          .then(() => {
+            //
+          })
+          .catch((err) => console.error(err));
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <div className="flex justify-center mt-10">
         <div className="w-[385px] h-[580px] shadow-2xl ">
           <h1 className="text-xl text-accent text-center mt-4">Register</h1>
           <div className="mx-7 mt-5">
-            <form>
+            <form onSubmit={handleCreateUser}>
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -32,12 +54,10 @@ const Register = () => {
                 <span className="label-text">If You seller or buyer </span>
               </label>
               <select
-                required
                 className="select select-bordered w-full max-w-xs"
+                name="customer"
+                required
               >
-                <option disabled selected>
-                  Who are you?
-                </option>
                 <option>Seller</option>
                 <option>Buyer</option>
               </select>
