@@ -1,8 +1,7 @@
 import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import BookingModal from "./BookingModal";
 
-const ShowCategory = ({ item }) => {
+const ShowCategory = ({ item, setCategory }) => {
   const { name, img, location, reprice, orprice, year, seller } = item;
   return (
     <div>
@@ -29,13 +28,16 @@ const ShowCategory = ({ item }) => {
             </div>
           </div>
           <div>
-            <label htmlFor="book-modal" className="btn btn-primary w-full">
+            <label
+              onClick={() => setCategory(item)}
+              htmlFor="book-modal"
+              className="btn btn-primary w-full"
+            >
               Booked now
             </label>
           </div>
         </div>
       </div>
-      <BookingModal></BookingModal>
     </div>
   );
 };
