@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/useContextApi";
 
 const Register = () => {
@@ -27,11 +28,28 @@ const Register = () => {
         const userInfo = { displayName: name };
         updateName(userInfo)
           .then(() => {
-            //
+            userDetail(name, email, customer);
           })
           .catch((err) => console.error(err));
       })
       .catch((err) => console.error(err));
+  };
+
+  const userDetail = (name, email, role) => {
+    const users = { name, email, role };
+    fetch(`${process.env.REACT_APP_url}/user`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(users),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("data success");
+        }
+      });
   };
 
   return (

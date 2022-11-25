@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/useContextApi";
+import useBuyer from "../../hook/useBuyer";
+import useSeller from "../../hook/useSeller";
 
 const Navbar = () => {
-  const menuItems = (
-    <>
-      <Link to="/login">Sing Up</Link>
-    </>
-  );
+  const { user, logOut } = useContext(AuthContext);
+  const [isSeller] = useSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
+
+  const userLogOut = () => {
+    logOut()
+      .then(() => {
+        //
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <div className="navbar bg-base-200">
@@ -32,14 +42,36 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>{menuItems}</li>
+              <li>
+                {user ? (
+                  <Link>sing out</Link>
+                ) : (
+                  <Link to="/login">Sing Up</Link>
+                )}
+              </li>
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            <li>{menuItems}</li>
+            <li>
+              {user ? (
+                <Link onClick={userLogOut}>sing out</Link>
+              ) : (
+                <Link to="/login">Sing Up</Link>
+              )}
+              {isSeller && (
+                <>
+                  <Link>seller</Link>
+                </>
+              )}
+              {isBuyer && (
+                <>
+                  <Link>Buyer</Link>
+                </>
+              )}
+            </li>
           </ul>
         </div>
       </div>

@@ -6,7 +6,9 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 
@@ -31,9 +33,20 @@ const UseContextApi = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const userLogIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   const updateName = (userInfo) => {
     setLoading(true);
     return updateProfile(auth.currentUser, userInfo);
+  };
+
+  // logOut
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
   };
 
   //   auth user state change
@@ -47,7 +60,15 @@ const UseContextApi = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ googleSingUp, createUser, updateName, loading, user }}
+      value={{
+        googleSingUp,
+        createUser,
+        updateName,
+        userLogIn,
+        logOut,
+        loading,
+        user,
+      }}
     >
       {children}
     </AuthContext.Provider>

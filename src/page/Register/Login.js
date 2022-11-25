@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/useContextApi";
 
 const Login = () => {
-  const { googleSingUp } = useContext(AuthContext);
+  const { googleSingUp, userLogIn } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   // handle toggle
   const toggle = () => {
     setOpen(!open);
@@ -15,6 +16,20 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate("/");
+      })
+      .catch((err) => console.error(err));
+  };
+  const emailAndPasswordLogIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    userLogIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/");
       })
       .catch((err) => console.error(err));
   };
@@ -24,7 +39,7 @@ const Login = () => {
         <div className="w-[385px] h-[520px] shadow-2xl ">
           <h1 className="text-xl text-accent text-center mt-4">Login</h1>
           <div className="mx-7 mt-5">
-            <form>
+            <form onSubmit={emailAndPasswordLogIn}>
               <label className="label">
                 <span className="label-text">Email</span>
               </label>

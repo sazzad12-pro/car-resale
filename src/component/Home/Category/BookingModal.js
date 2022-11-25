@@ -49,7 +49,7 @@ const BookingModal = ({ category, setCategory }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Congratulations {name} </h3>
+          <h3 className="text-lg font-bold">{name} </h3>
           <form onSubmit={handleBook} className="text-center">
             <input
               type="text"
