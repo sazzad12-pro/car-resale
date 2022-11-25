@@ -17,7 +17,12 @@ const CategoryId = () => {
           setCategory={setCategory}
         ></ShowCategory>
       ))}
-      {category && <BookingModal category={category}></BookingModal>}
+      {category && (
+        <BookingModal
+          category={category}
+          setCategory={setCategory}
+        ></BookingModal>
+      )}
     </div>
   );
 };
