@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/useContextApi";
+import useAdmin from "../../hook/useAdmin";
 import useBuyer from "../../hook/useBuyer";
 import useSeller from "../../hook/useSeller";
 
@@ -8,6 +9,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isSeller] = useSeller(user?.email);
   const [isBuyer] = useBuyer(user?.email);
+  const [isAdmin] = useAdmin(user?.email);
 
   const userLogOut = () => {
     logOut()
@@ -53,8 +55,8 @@ const Navbar = () => {
           </div>
           <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
+        <div className="navbar-center hidden lg:flex ">
+          <ul className="menu menu-horizontal p-0 ">
             <li>
               {user ? (
                 <Link onClick={userLogOut}>sing out</Link>
@@ -68,7 +70,13 @@ const Navbar = () => {
               )}
               {isBuyer && (
                 <>
+                  <Link to="/orders">My Order</Link>
+                </>
+              )}
+              {isAdmin && (
+                <>
                   <Link>Buyer</Link>
+                  <Link>seller</Link>
                 </>
               )}
             </li>

@@ -5,7 +5,7 @@ const useAdmin = (email) => {
   const [isAdminLoading, setIsAdminLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`${process.env.REACT_APP_url}/user/role/${email}`)
+      fetch(`${process.env.REACT_APP_url}/user/admin/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
