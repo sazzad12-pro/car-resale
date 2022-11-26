@@ -4,23 +4,25 @@ import { AuthContext } from "../../../Context/useContextApi";
 
 const BookingModal = ({ category, setCategory }) => {
   const { user } = useContext(AuthContext);
-  const { name, location, reprice, orprice, year, seller } = category;
+  const { name, location, reprice, orprice, year, seller, img } = category;
 
   const handleBook = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const userName = form.name.value;
     const email = form.email.value;
     const location = form.location.value;
     const phone = form.phone.value;
     const price = form.price.value;
 
     const bookCategory = {
-      userName: name,
+      userName,
+      name,
       userEmail: email,
       userLocation: location,
       userPhone: phone,
       price,
+      img,
     };
     fetch(`${process.env.REACT_APP_url}/category`, {
       method: "POST",

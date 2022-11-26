@@ -65,7 +65,8 @@ const Navbar = () => {
               )}
               {isSeller && (
                 <>
-                  <Link>seller</Link>
+                  <Link to="/product">Add Product</Link>
+                  <Link to="/myProduct">My Product</Link>
                 </>
               )}
               {isBuyer && (
