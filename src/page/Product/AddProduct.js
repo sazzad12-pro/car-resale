@@ -10,6 +10,7 @@ const AddProduct = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const newDate = new Date();
 
   const imgHostKey = process.env.REACT_APP_imgbb;
 
@@ -26,7 +27,7 @@ const AddProduct = () => {
       .then((imgData) => {
         if (imgData.success) {
           const info = {
-            name: data.name,
+            name: data.productName,
             img: imgData.data.url,
             reprice: data.reprice,
             orprice: data.orprice,
@@ -35,6 +36,8 @@ const AddProduct = () => {
             condition: data.condition,
             describe: data.describe,
             category: data.category,
+            date: newDate,
+            seller: data.name,
           };
           fetch(`${process.env.REACT_APP_url}/product?name=${data.category}`, {
             method: "POST",
@@ -63,14 +66,27 @@ const AddProduct = () => {
               {...register("name", {
                 require: "name is required",
               })}
-              className="input input-bordered input-primary w-full max-w-xs mt-4"
+              className="input input-bordered input-primary w-full max-w-xs"
               placeholder="Enter your Name"
             />
             {errors.name && (
               <p className="text-red-500">{errors.name.message}</p>
             )}
           </div>
-
+          <br />
+          <div className="form-control w-full max-w-x">
+            <input
+              type="text"
+              {...register("productName", {
+                require: "name is required",
+              })}
+              className="input input-bordered input-primary w-full max-w-xs"
+              placeholder="Enter your Product Name"
+            />
+            {errors.name && (
+              <p className="text-red-500">{errors.name.message}</p>
+            )}
+          </div>
           <br />
           <div className="form-control w-full max-w-x">
             {" "}
@@ -79,14 +95,13 @@ const AddProduct = () => {
               {...register("reprice", {
                 require: "Price is require",
               })}
-              className="input input-bordered input-primary w-full max-w-xs mt-4"
+              className="input input-bordered input-primary w-full max-w-xs  "
               placeholder="Enter your sell price"
             />
             {errors.reprice && (
               <p className="text-red-500">{errors.reprice.message}</p>
             )}
           </div>
-
           <br />
           <div className="form-control w-full max-w-x">
             {" "}
@@ -95,7 +110,7 @@ const AddProduct = () => {
               {...register("orprice", {
                 require: "Price is require",
               })}
-              className="input input-bordered input-primary w-full max-w-xs mt-4"
+              className="input input-bordered input-primary w-full max-w-xs"
               placeholder="Enter Your Original Price"
             />
             {errors.orprice && (
@@ -110,7 +125,7 @@ const AddProduct = () => {
               {...register("location", {
                 require: "Price is require",
               })}
-              className="input input-bordered input-primary w-full max-w-xs mt-4"
+              className="input input-bordered input-primary w-full max-w-xs"
               placeholder="Enter your location"
             />
             {errors.location && (
@@ -126,7 +141,7 @@ const AddProduct = () => {
               {...register("year", {
                 require: "Price is require",
               })}
-              className="input input-bordered input-primary w-full max-w-xs mt-4"
+              className="input input-bordered input-primary w-full max-w-xs  "
               placeholder="how many day use "
             />
             {errors.year && (
@@ -142,7 +157,7 @@ const AddProduct = () => {
               {...register("image", {
                 require: "Image is require",
               })}
-              className="input input-bordered input-primary w-full max-w-xs mt-4"
+              className="input input-bordered input-primary w-full max-w-xs "
             />
             {errors.image && (
               <p className="text-red-500">{errors.image.message}</p>
@@ -156,7 +171,7 @@ const AddProduct = () => {
               {...register("condition", {
                 require: "Condition is require",
               })}
-              className="select select-primary select-bordered w-full max-w-xs mt-4"
+              className="select select-primary select-bordered w-full max-w-xs "
             >
               <option disabled selected>
                 Condition type
@@ -177,7 +192,7 @@ const AddProduct = () => {
               {...register("category", {
                 require: "Category is require",
               })}
-              className="select select-primary select-bordered w-full max-w-xs mt-4"
+              className="select select-primary select-bordered w-full max-w-xs "
             >
               <option disabled selected>
                 Product Category
@@ -192,13 +207,13 @@ const AddProduct = () => {
           </div>
 
           <br />
-          <div className="form-control w-full  text-center">
+          <div className="form-control w-full ">
             {" "}
             <textarea
               {...register("describe", {
                 require: "Describe is require",
               })}
-              className="textarea w-full max-w-xs textarea-primary mt-4"
+              className="textarea w-full max-w-xs textarea-primary"
               placeholder="describe"
             ></textarea>
             {errors.describe && (

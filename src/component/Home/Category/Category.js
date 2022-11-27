@@ -12,11 +12,13 @@ const Category = () => {
     },
   });
   return (
-    <div className="my-10">
+    <div className="my-28">
       <div className="text-center">
         <div>
-          <h1 className="4xl">Let's Find Your Dream Car</h1>
-          <p className="py-6">
+          <h1 className="text-2xl font-semibold lg:text-5xl lg:font-semibold">
+            Let's Find Your Dream Car
+          </h1>
+          <p className="py-2 lg:py-4 my-3 text-lg lg:text-xl">
             We recommend very best reuse and almost newest cars today. and also
             a friendly price for you
           </p>

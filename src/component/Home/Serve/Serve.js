@@ -28,19 +28,21 @@ const Serve = () => {
   return (
     <div className="mt-20">
       <div className="text-center">
-        <h2 className="text-4xl font-semibold">What Our Serve For You</h2>
-        <p className="py-4">
+        <h2 className="text-xl lg:text-5xl font-semibold">
+          What Our Serve For You
+        </h2>
+        <p className="py-2 lg:py-7 text-lg lg:text-xl">
           We provide many of the best services for you and you will get the
           benefits here
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 my-8">
         {cards.map((card) => (
           <div key={card.id} className="card  w-[360px] bg-base-200 shadow-xl">
             <div className="card-body">
-              <span className="text-3xl">{card.icon}</span>
-              <h2 className="card-title"> {card.name}</h2>
-              <p>{card.describe} </p>
+              <span className="text-3xl text-primary">{card.icon}</span>
+              <h2 className="card-title font-bold"> {card.name}</h2>
+              <p className="text-lg">{card.describe} </p>
             </div>
           </div>
         ))}

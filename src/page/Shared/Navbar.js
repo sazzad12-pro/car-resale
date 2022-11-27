@@ -4,6 +4,7 @@ import { AuthContext } from "../../Context/useContextApi";
 import useAdmin from "../../hook/useAdmin";
 import useBuyer from "../../hook/useBuyer";
 import useSeller from "../../hook/useSeller";
+import logo from "../../asset/logo/i.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -53,8 +54,12 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Mobing
+          <img src={logo} alt="" className="h-[40px]" />
+          <Link
+            to="/"
+            className="btn btn-ghost normal-case text-xl font-bold text-primary "
+          >
+            Car House
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex ">

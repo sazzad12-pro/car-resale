@@ -2,7 +2,7 @@ import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const ShowCategory = ({ item, setCategory }) => {
-  const { name, img, location, reprice, orprice, year, seller } = item;
+  const { name, img, location, reprice, orprice, year, seller, date } = item;
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -24,7 +24,7 @@ const ShowCategory = ({ item, setCategory }) => {
               </h3>
             </div>
             <div>
-              <p>{year}</p>
+              <p>{date}</p>
             </div>
           </div>
           <div>
