@@ -5,7 +5,7 @@ const CategoriesItem = ({ category }) => {
   const { _id, name, icon } = category;
   return (
     <Link to={`/category/${_id}`}>
-      <div className="border h-14 px-4 lg:h-36  flex items-center lg:flex lg:items-center mx-3  hover:bg-purple-500 hover:text-white">
+      <div className="border h-14 px-4 lg:h-28  flex items-center lg:flex lg:items-center mx-3  hover:bg-purple-500 hover:text-white">
         <div>
           <div className="avatar">
             <div className="w-8 lg:w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
