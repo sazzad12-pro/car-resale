@@ -4,6 +4,7 @@ import Home from "../component/Home/Home";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import Main from "../Layout/Main";
 import AllUser from "../page/Dashboard/AllUser";
+import Payment from "../page/Dashboard/Payment/Payment";
 
 import MyOrder from "../page/Order/MyOrder";
 import AddProduct from "../page/Product/AddProduct";
@@ -56,6 +57,12 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/allUser",
         element: <AllUser></AllUser>,
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_url}/booked/${params.id}`),
       },
     ],
   },

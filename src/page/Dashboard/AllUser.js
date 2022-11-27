@@ -49,7 +49,7 @@ const AllUser = () => {
                   {user.role !== "admin" && (
                     <button
                       onClick={() => handleDelete(user._id)}
-                      className="btn-sm"
+                      className="btn btn-sm btn-primary"
                     >
                       Delete
                     </button>

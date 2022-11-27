@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/useContextApi";
 
 const Register = () => {
   const { googleSingUp, createUser, updateName } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleGoogle = () => {
     googleSingUp()
       .then((result) => {
@@ -48,6 +49,7 @@ const Register = () => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("data success");
+          navigate("/");
         }
       });
   };
