@@ -5,7 +5,6 @@ const ShowCategory = ({ item, setCategory }) => {
   const { name, img, location, reprice, orprice, year, seller } = item;
   return (
     <div>
-      <h1 className="text-4xl">{name}</h1>
       <div className="card w-[340px]    bg-base-100 shadow-xl">
         <figure>
           <img className="h-[300px]" src={img} alt="Shoes" />

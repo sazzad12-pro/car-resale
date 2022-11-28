@@ -59,7 +59,9 @@ const Login = () => {
     <div>
       <div className="flex justify-center mt-10">
         <div className="w-[385px] h-[520px] shadow-2xl ">
-          <h1 className="text-xl text-accent text-center mt-4">Login</h1>
+          <h1 className="text-xl text-primary font-bold text-center mt-4">
+            Login
+          </h1>
           <div className="mx-7 mt-5">
             <form onSubmit={emailAndPasswordLogIn}>
               <label className="label">

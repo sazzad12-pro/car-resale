@@ -78,8 +78,10 @@ const Register = () => {
   return (
     <div>
       <div className="flex justify-center mt-10">
-        <div className="w-[385px] h-[580px] shadow-2xl ">
-          <h1 className="text-xl text-accent text-center mt-4">Register</h1>
+        <div className="w-[385px] h-[640px] shadow-2xl ">
+          <h1 className="text-xl text-primary font-bold text-center mt-4">
+            Register
+          </h1>
           <div className="mx-7 mt-5">
             <form onSubmit={handleCreateUser}>
               <label className="label">
@@ -124,7 +126,7 @@ const Register = () => {
               <input
                 type="submit"
                 className="btn btn-primary input input-bordered w-full max-w-xs mt-6"
-                value="Login"
+                value="Register"
               />
             </form>
             <h1 className="text-sm font-semibold mt-4 mx-10">
