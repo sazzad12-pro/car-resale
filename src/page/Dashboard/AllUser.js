@@ -6,7 +6,11 @@ const AllUser = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_url}/all/user`);
+      const res = await fetch(`${process.env.REACT_APP_url}/all/user`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },

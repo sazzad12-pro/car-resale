@@ -43,6 +43,33 @@ const DashBoardLayout = () => {
               <li>
                 <>
                   <Link to="/dashboard/allUser">ALl User</Link>
+                  <div className="dropdown dropdown-bottom">
+                    <label tabIndex={0}>All Seller</label>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                        <>
+                          <Link to="/product">Add Product</Link>
+                          <Link to="/myProduct">My Product</Link>
+                        </>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="dropdown dropdown-bottom">
+                    <label tabIndex={0}>All Buyer</label>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                        <>
+                          <Link to="/orders">My Order</Link>
+                        </>
+                      </li>
+                    </ul>
+                  </div>
                 </>
               </li>
             )}
