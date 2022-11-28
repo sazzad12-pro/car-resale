@@ -32,7 +32,7 @@ const MyOrder = () => {
             </tr>
           </thead>
           <tbody>
-            {bookedItems &&
+            {bookedItems.length &&
               bookedItems.map((order, i) => (
                 <tr key={order._id}>
                   <th>{i + 1}</th>

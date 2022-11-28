@@ -1,12 +1,20 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/useContextApi";
+import useToken from "../../hook/useToken";
 
 const Login = () => {
   const { googleSingUp, userLogIn } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const [loginUser, setLoginUser] = useState("");
+  const [token] = useToken(loginUser);
+
+  if (token) {
+    navigate("/");
+  }
   // handle toggle
   const toggle = () => {
     setOpen(!open);
@@ -15,8 +23,21 @@ const Login = () => {
     googleSingUp()
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        navigate("/");
+        const userInfo = { name: user.displayName, email: user.email };
+        fetch(`${process.env.REACT_APP_url}/google/user`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              toast.success("google data post");
+              setLoginUser(user.email);
+            }
+          });
       })
       .catch((err) => console.error(err));
   };
@@ -28,8 +49,7 @@ const Login = () => {
     userLogIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        navigate("/");
+        setLoginUser(user?.email);
       })
       .catch((err) => console.error(err));
   };

@@ -1,16 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/useContextApi";
+import useToken from "../../hook/useToken";
 
 const Register = () => {
   const { googleSingUp, createUser, updateName } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loginUser, setLoginUser] = useState("");
+  const [token] = useToken(loginUser);
+  if (token) {
+    toast.success("Registetion success");
+    navigate("/");
+  }
   const handleGoogle = () => {
     googleSingUp()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const userInfo = { name: user.displayName, email: user.email };
+        fetch(`${process.env.REACT_APP_url}/google/user`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              toast.success("google data post");
+              setLoginUser(user.email);
+            }
+          });
       })
       .catch((err) => console.error(err));
   };
@@ -49,7 +70,7 @@ const Register = () => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("data success");
-          navigate("/");
+          setLoginUser(email);
         }
       });
   };
