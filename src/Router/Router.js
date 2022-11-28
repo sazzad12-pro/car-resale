@@ -12,6 +12,7 @@ import MyProduct from "../page/Product/MyProduct";
 
 import Login from "../page/Register/Login";
 import Register from "../page/Register/Register";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        element: <CategoryId></CategoryId>,
+        element: (
+          <PrivateRouter>
+            <CategoryId></CategoryId>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_url}/category/${params.id}`),
       },
@@ -52,7 +57,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashBoardLayout></DashBoardLayout>,
+    element: (
+      <PrivateRouter>
+        <DashBoardLayout></DashBoardLayout>
+      </PrivateRouter>
+    ),
     children: [
       {
         path: "/dashboard/allUser",

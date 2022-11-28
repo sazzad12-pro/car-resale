@@ -49,16 +49,18 @@ const AddProduct = () => {
             .then((res) => res.json())
             .then((result) => {
               toast.success("product add");
-              navigate("/");
+              navigate("/myProduct");
             });
         }
       });
   };
 
   return (
-    <div>
-      <h1>Add a product</h1>
-      <div className="w-[50%] mx-auto">
+    <div className="bg-base-200 lg:p-4">
+      <h1 className="text-2xl text-center text-primary font-mono py-6">
+        Add A Product for Sale
+      </h1>
+      <div className="w-[25%] mx-auto">
         <form onSubmit={handleSubmit(handleAddProduct)}>
           <div className="form-control w-full max-w-x">
             <input
@@ -117,7 +119,6 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.orprice.message}</p>
             )}
           </div>
-
           <br />
           <div className="form-control w-full max-w-x">
             <input
@@ -132,7 +133,6 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.location.message}</p>
             )}
           </div>
-
           <br />
           <div className="form-control w-full max-w-x">
             {" "}
@@ -148,7 +148,6 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.year.message}</p>
             )}
           </div>
-
           <br />
           <div className="form-control w-full max-w-x">
             {" "}
@@ -163,7 +162,6 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.image.message}</p>
             )}
           </div>
-
           <br />
           <div className="form-control w-full max-w-x">
             {" "}

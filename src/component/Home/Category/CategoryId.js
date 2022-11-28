@@ -9,7 +9,7 @@ const CategoryId = () => {
   const [category, setCategory] = useState(null);
 
   return (
-    <div className="grid  grid-cols-1 lg:grid-cols-2">
+    <div className="grid gap-4 mt-10 bg-base-200 p-10 lg:p-5  grid-cols-1 lg:gap-10 lg:grid-cols-3">
       {items.map((item) => (
         <ShowCategory
           key={item.categoryId}

@@ -1,19 +1,21 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/useContextApi";
 import useToken from "../../hook/useToken";
 
 const Login = () => {
-  const { googleSingUp, userLogIn } = useContext(AuthContext);
+  const { googleSingUp, userLogIn, loading } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const [loginUser, setLoginUser] = useState("");
   const [token] = useToken(loginUser);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   if (token) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   // handle toggle
   const toggle = () => {

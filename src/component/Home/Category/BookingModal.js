@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Context/useContextApi";
 
 const BookingModal = ({ category, setCategory }) => {
   const { user } = useContext(AuthContext);
-  const { name, location, reprice, orprice, year, seller, img } = category;
+  const { name, reprice, img } = category;
 
   const handleBook = (e) => {
     e.preventDefault();
