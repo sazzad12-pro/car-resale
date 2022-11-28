@@ -52,9 +52,14 @@ const MyOrder = () => {
                     </div>
                   </td>
                   <td>
-                    <Link to={`/dashboard/payment/${order._id}`}>
-                      <button className="btn btn-sm btn-primary">Pay</button>
-                    </Link>
+                    {order.price && !order.paid && (
+                      <Link to={`/dashboard/payment/${order._id}`}>
+                        <button className="btn btn-sm btn-primary">Pay</button>
+                      </Link>
+                    )}
+                    {order.price && order.paid && (
+                      <span className="text-green-500">Paid</span>
+                    )}
                   </td>
                 </tr>
               ))}
